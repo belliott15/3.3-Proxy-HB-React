@@ -1,6 +1,6 @@
 
-export default async function getPokemon(){
-  const rawResponse = await fetch(`http://localhost:8888/.netlify/functions/Pokemon`);
+export default async function getPokemon(query){
+  const rawResponse = await fetch(`/.netlify/functions/Pokemon?pokemon=${query}`);
   const data = await rawResponse.json();
   
   return data;

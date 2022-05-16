@@ -4,7 +4,7 @@ import Pokemon from './Pokemon';
 export default function PokemonList({ pokemon }) {
   return (
     <div>
-      {pokemon.map((poke, i) => <Pokemon key={poke.id + i + poke.name} poke={poke}/>)}
+      {pokemon.map((poke, i) => <Pokemon key={poke.pokemon + i} poke={poke}/>)}
     </div>
   );
 }
