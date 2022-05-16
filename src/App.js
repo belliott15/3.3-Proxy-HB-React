@@ -1,26 +1,29 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import getPokemon from './services/fetch.utils';
-import Pokemon from './Pokemon';
+import PokemonList from './PokemonList';
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('char');
 
   useEffect(() => {
     async function getAllPokemon(){
-      const { data } = await getPokemon(query);
-      setPokemon(data.results);
+      const response = await getPokemon(query);
+      setPokemon(response.data.results);
     }
+    
     getAllPokemon();
   }, [query]);
+
+  
 
   async function handleQuery(e){
     e.preventDefault();
 
     async function getAllPokemon(){
-      const { data: { results } } = await getPokemon(query);
-      setPokemon(results);
+      const { data } = await getPokemon(query);
+      setPokemon(data.results);
     }
     getAllPokemon();
   }
@@ -31,7 +34,7 @@ function App() {
           <input required onChange={(e) => setQuery(e.target.value)} />
           <button>Search</button>
         </form>
-        {pokemon.map((poke, i) => <Pokemon key={poke.id + i + poke.name} poke={poke}/>)}
+        <PokemonList pokemon={pokemon}/>
       </header>
     </div>
   );
