@@ -43,7 +43,7 @@ function App() {
           : <div>
             <h1>Pokemon Search</h1>
             <form onSubmit={handleQuery}>
-              <input required onChange={(e) => setQuery(e.target.value)} />
+              <input onChange={(e) => setQuery(e.target.value)} />
               <button>Search</button>
             </form>
             <PokemonList pokemon={pokemon}/> 
