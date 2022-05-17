@@ -20,7 +20,7 @@ function App() {
     }
     getAllPokemon();
     
-  }, []);
+  }, []); //eslint-disable-line
   
   
 
